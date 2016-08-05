@@ -31,7 +31,6 @@ $(document).ready(function() {
 				hIcon = iconCheck(hourlyJson.data[i].icon);
 				hSummary = hourlyJson.data[i].summary;
 				hTemp = fahrenheitToCelcius(hourlyJson.data[i].temperature) + "&#176;C";
-				console.log(formatAMPM(hHour));
 				var listBuilder = "<li>" 
 				+ hHour + "&emsp;"
 				+ "<img src='images/tick/" + hIcon + ".png'  height='25' width='25'>"
