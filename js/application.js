@@ -28,7 +28,7 @@ $(document).ready(function() {
 				
 				var hHour, hIcon, hSummary, hTemp;
 				hHour = formatAMPM(hDate.getHours());
-				hIcon = iconCheck(hourlyJson.data[i].icon);
+				hIcon = iconCheck(hourlyJson.data[i].icon, hDate);
 				hSummary = hourlyJson.data[i].summary;
 				hTemp = fahrenheitToCelcius(hourlyJson.data[i].temperature) + "&#176;C";
 				var listBuilder = "<li>" 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 				
 				var dDay, dIcon, dSummary, dTemp;
 				dDay = weekday[dDate.getDay()];
-				dIcon = iconCheck(dailyJson.data[i].icon);
+				dIcon = iconCheck(dailyJson.data[i].icon, dDate);
 				dSummary = dailyJson.data[i].summary;
 				dTemp = fahrenheitToCelcius(dailyJson.data[i].temperature) + "&#176;C";
 				
