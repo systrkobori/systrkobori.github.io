@@ -17,7 +17,7 @@ $(document).ready(function() {
 			$("#current_location").html(cTimezone);
 			$("#current_temp").html("<img src='images/tick/" + cIcon + ".png'  height='45' width='45'>&nbsp;" + fahrenheitToCelcius(cTemperature) + "&#176;C");
 			$("#current_summary").html(cSummary);
-			$("#current_time").html("At " + cDate.getHours() + ":" + pad(cDate.getMinutes()) + " it will be:")
+			$("#current_time").html("At " + formatTime(cDate) + " it will be:")
 			
 			var dailyJson = json.daily;
 			var hourlyJson = json.hourly;
@@ -83,6 +83,22 @@ $(document).ready(function() {
 
 function pad(n) { 
 	return ("0" + n).slice(-2); 
+}
+
+function formatTime(date) {
+	var returnHour;
+	var hour = date.getHours();
+	var minutes = pad(date.getMinutes());
+	var dd = "AM";
+	if (hour >= 12) {
+		hour = hour - 12;
+		dd = "PM";
+	}
+	if (hour == 0) {
+		hour = 12;
+	}
+	returnHour = hour + ":" + minutes + dd;
+	return returnHour;
 }
 
 function loadWeather(currentCoords){
@@ -158,5 +174,3 @@ function loadCity(city){
 		loadWeather(cities[city.toLowerCase()]);
 	}
 }
-
- 
